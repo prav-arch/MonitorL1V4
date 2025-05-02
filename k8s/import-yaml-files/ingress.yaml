@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: l1-monitoring-ingress
+  namespace: l1-monitoring
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: l1-monitoring.local  # Change this to your domain or IP
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: l1-monitoring
+            port:
+              number: 80
+      - path: /api/ollama
+        pathType: Prefix
+        backend:
+          service:
+            name: ollama
+            port:
+              number: 11434
+      - path: /api/clickhouse
+        pathType: Prefix
+        backend:
+          service:
+            name: clickhouse
+            port:
+              number: 8123

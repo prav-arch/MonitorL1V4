@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: l1-monitoring
+  labels:
+    app: l1-monitoring
+spec:
+  selector:
+    app: l1-monitoring
+  ports:
+  - port: 80
+    targetPort: 80
+    name: http
+  type: ClusterIP

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  config: |
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+
+        location /api {
+            return 200 '{"status": "ok", "message": "L1 Monitoring API placeholder"}';
+            add_header Content-Type application/json;
+        }
+
+        location /api/health {
+            return 200 '{"status": "healthy", "uptime": "0d 0h 0m", "components": {"postgres": "ok", "clickhouse": "ok", "ollama": "ok"}}';
+            add_header Content-Type application/json;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }
