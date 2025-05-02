@@ -37,11 +37,11 @@ spec:
           name: http
         resources:
           requests:
-            memory: "96Mi"   # Further reduced for 8GB systems
-            cpu: "30m"       # Further reduced for 8GB systems  
+            memory: "64Mi"   # Extremely reduced for resource-constrained systems
+            cpu: "20m"       # Extremely reduced for resource-constrained systems  
           limits:
-            memory: "192Mi"  # Further reduced for 8GB systems
-            cpu: "80m"       # Further reduced for 8GB systems
+            memory: "128Mi"  # Extremely reduced for resource-constrained systems
+            cpu: "50m"       # Extremely reduced for resource-constrained systems
         volumeMounts:
         - name: nginx-config
           mountPath: /etc/nginx/conf.d/default.conf

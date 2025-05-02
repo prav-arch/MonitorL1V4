@@ -13,14 +13,14 @@ spec:
         command: 
         - "/bin/sh"
         - "-c"
-        - "ollama serve > /dev/null 2>&1 & echo 'Waiting for Ollama to start...' && sleep 45 && echo 'Pulling tinyllama model...' && ollama pull tinyllama && echo 'Model successfully pulled'"
+        - "ollama serve > /dev/null 2>&1 & echo 'Waiting for Ollama to start...' && sleep 45 && echo 'Pulling smallest model...' && ollama pull orca-mini && echo 'Model successfully pulled'"
         resources:
           limits:
-            memory: "768Mi"   # Further reduced for 8GB systems
-            cpu: "600m"       # Further reduced for 8GB systems
+            memory: "512Mi"   # Extremely reduced for resource-constrained systems
+            cpu: "300m"       # Extremely reduced for resource-constrained systems
           requests:
-            memory: "384Mi"   # Further reduced for 8GB systems
-            cpu: "100m"       # Further reduced for 8GB systems
+            memory: "256Mi"   # Extremely reduced for resource-constrained systems
+            cpu: "80m"        # Extremely reduced for resource-constrained systems
         volumeMounts:
         - name: ollama-data
           mountPath: /root/.ollama

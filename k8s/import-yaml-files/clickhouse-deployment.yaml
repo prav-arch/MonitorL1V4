@@ -38,11 +38,11 @@ spec:
           name: native
         resources:
           requests:
-            memory: "192Mi"  # Further reduced for 8GB systems
-            cpu: "30m"       # Further reduced for 8GB systems
+            memory: "96Mi"   # Extremely reduced for resource-constrained systems
+            cpu: "20m"       # Extremely reduced for resource-constrained systems
           limits:
-            memory: "384Mi"  # Further reduced for 8GB systems
-            cpu: "150m"      # Further reduced for 8GB systems
+            memory: "192Mi"  # Extremely reduced for resource-constrained systems
+            cpu: "80m"       # Extremely reduced for resource-constrained systems
         volumeMounts:
         - name: clickhouse-data
           mountPath: /var/lib/clickhouse
