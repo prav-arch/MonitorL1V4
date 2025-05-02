@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # This script deploys the L1 Monitoring application components optimized for low resources (8GB RAM)
-# It uses tinyllama instead of llama2 for the LLM model
+# It uses tinyllama instead of llama2 for the LLM model and has reduced resource limits for all components
+# All components have been optimized to run within 8GB of system memory
 
 # Set script to exit on error
 set -e
@@ -20,6 +21,20 @@ echo -e "${YELLOW}Starting L1 Monitoring low-resource deployment...${NC}"
 if ! command -v kubectl &> /dev/null; then
     echo -e "${RED}kubectl could not be found. Please install kubectl first.${NC}"
     exit 1
+fi
+
+# Check for minimum memory requirements (8GB)
+TOTAL_MEMORY=$(free -m | awk '/^Mem:/{print $2}')
+if [[ $TOTAL_MEMORY -lt 7500 ]]; then
+    echo -e "${RED}WARNING: This system has less than 8GB of RAM ($TOTAL_MEMORY MB).${NC}"
+    echo -e "${YELLOW}Deployment may not work correctly or may be unstable.${NC}"
+    echo -e "${YELLOW}Do you want to continue anyway? (y/n)${NC}"
+    read -r answer
+    if [[ "$answer" != "y" ]]; then
+        echo -e "${RED}Deployment aborted.${NC}"
+        exit 1
+    fi
+    echo -e "${YELLOW}Continuing with deployment on limited resources...${NC}"
 fi
 
 # Delete namespace if it exists (optional - remove if you don't want to clean up)
@@ -120,3 +135,13 @@ echo -e "If you have an ingress controller, access at: http://l1-monitoring.loca
 echo -e "Otherwise, use port-forwarding to access the application:"
 echo -e "kubectl port-forward -n ${NAMESPACE} svc/l1-monitoring 8080:80"
 echo -e "Then access at: http://localhost:8080"
+
+# Display resource usage summary
+echo -e "\n${YELLOW}Resource Usage Summary:${NC}"
+echo -e "This optimized deployment uses approximately:"
+echo -e "- App: 192Mi memory, 80m CPU"
+echo -e "- PostgreSQL: 192Mi memory, 80m CPU"
+echo -e "- ClickHouse: 384Mi memory, 150m CPU"
+echo -e "- Ollama (tinyllama): 1Gi memory, 800m CPU"
+echo -e "Total approximate resource usage: 1.77Gi memory, 1.11 CPU cores"
+echo -e "${YELLOW}Note: Actual resource usage may vary based on workload and data volume.${NC}"

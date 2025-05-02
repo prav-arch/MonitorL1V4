@@ -43,11 +43,11 @@ spec:
           value: "postgres"
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "50m"
+            memory: "96Mi"   # Further reduced for 8GB systems
+            cpu: "30m"       # Further reduced for 8GB systems
           limits:
-            memory: "256Mi"
-            cpu: "100m"
+            memory: "192Mi"  # Further reduced for 8GB systems
+            cpu: "80m"       # Further reduced for 8GB systems
         volumeMounts:
         - name: postgres-data
           mountPath: /var/lib/postgresql/data
