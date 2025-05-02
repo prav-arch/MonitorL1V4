@@ -15,7 +15,7 @@ A sophisticated, locally-hosted GenAI application for L1 monitoring that uses RA
 ### Core Functionality
 - **Log Collection & Processing**: Upload and parse log files from telecom systems
 - **High-Performance Log Storage**: Store logs in ClickHouse for fast analytics and querying
-- **SQLite Fallback**: Automatic fallback to SQLite for development and testing
+- **Three-Tier Database Fallback**: Automatic fallback from ClickHouse to PostgreSQL to SQLite for flexible deployment
 - **ML-based Anomaly Detection**: Automatically identify unusual patterns in telecom logs
 - **Vector Search**: Implement vector similarity search to find relevant logs for troubleshooting
 - **Local LLM Integration**: Use locally-simulated telecom-specific LLM responses without external API dependencies
@@ -28,12 +28,13 @@ The application consists of the following components:
 
 1. **Flask Backend**: Serves the web application and APIs
 2. **ClickHouse Database**: High-performance columnar database for log storage and analytics
-3. **SQLite Fallback**: Local database option for development and testing
-4. **Vector Store**: Maintains embeddings for semantic search of logs
-5. **Simulated LLM Interface**: Provides sophisticated telecom-specific analysis without external API dependencies
-6. **RAG Engine**: Combines vector search with telecom knowledge to generate contextual suggestions
-7. **Telecom Processor**: Specialized component for parsing and extracting metadata from telecom logs
-8. **ML Anomaly Detector**: Machine learning-based system for identifying anomalies in log patterns
+3. **PostgreSQL Database**: Secondary database option with PostgreSQL
+4. **SQLite Fallback**: Final fallback database option for development and testing
+5. **Vector Store**: Maintains embeddings for semantic search of logs
+6. **Simulated LLM Interface**: Provides sophisticated telecom-specific analysis without external API dependencies
+7. **RAG Engine**: Combines vector search with telecom knowledge to generate contextual suggestions
+8. **Telecom Processor**: Specialized component for parsing and extracting metadata from telecom logs
+9. **ML Anomaly Detector**: Machine learning-based system for identifying anomalies in log patterns
 
 ## Deployment Options
 
@@ -53,7 +54,7 @@ Quick Windows deployment steps:
 #### Prerequisites
 
 - Python 3.9+
-- ClickHouse (or the application will fallback to SQLite)
+- ClickHouse (or the application will fallback to PostgreSQL, then SQLite)
 - (Optional) OLLAMA for external LLM integration
 
 #### Installation
@@ -171,7 +172,7 @@ See [WINDOWS_DEPLOYMENT.md](WINDOWS_DEPLOYMENT.md) for Windows-specific troubles
 - Run `clickhouse-client -q "SELECT version()"` to test the connection
 - Check database credentials in your `.env` file
 - Review CLICKHOUSE_WINDOWS_SETUP.md for detailed troubleshooting
-- The application will automatically fall back to SQLite if ClickHouse is unavailable
+- The application will automatically fall back to PostgreSQL if ClickHouse is unavailable, and to SQLite if PostgreSQL is also unavailable
 - For Kubernetes, ensure persistent volumes are properly configured
 
 ### Log Processing Problems
