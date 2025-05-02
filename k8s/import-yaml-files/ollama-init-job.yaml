@@ -13,14 +13,14 @@ spec:
         command: 
         - "/bin/sh"
         - "-c"
-        - "ollama serve > /dev/null 2>&1 & echo 'Waiting for Ollama to start...' && sleep 45 && echo 'Pulling llama2 model...' && ollama pull llama2 && echo 'Model successfully pulled'"
+        - "ollama serve > /dev/null 2>&1 & echo 'Waiting for Ollama to start...' && sleep 45 && echo 'Pulling tinyllama model...' && ollama pull tinyllama && echo 'Model successfully pulled'"
         resources:
           limits:
-            memory: "4Gi"
-            cpu: "2"
-          requests:
             memory: "1Gi"
-            cpu: "500m"
+            cpu: "1"
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
         volumeMounts:
         - name: ollama-data
           mountPath: /root/.ollama

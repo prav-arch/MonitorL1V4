@@ -5,7 +5,7 @@ metadata:
   labels:
     app: ollama
 spec:
-  progressDeadlineSeconds: 600
+  progressDeadlineSeconds: 300  # Reduced from 600 to 300 seconds
   replicas: 1
   selector:
     matchLabels:
@@ -37,11 +37,11 @@ spec:
           name: api
         resources:
           limits:
-            memory: "4Gi"
-            cpu: "2"
+            memory: "1.5Gi"  # Reduced from 4Gi
+            cpu: "1"         # Reduced from 2
           requests:
-            memory: "1Gi"
-            cpu: "500m"
+            memory: "512Mi"  # Reduced from 1Gi
+            cpu: "200m"      # Reduced from 500m
         volumeMounts:
         - name: ollama-data
           mountPath: /root/.ollama
@@ -60,6 +60,15 @@ spec:
           periodSeconds: 5
           timeoutSeconds: 3
           successThreshold: 1
+          failureThreshold: 3
+        # Add liveness probe
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 11434
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
           failureThreshold: 3
       volumes:
       - name: ollama-data

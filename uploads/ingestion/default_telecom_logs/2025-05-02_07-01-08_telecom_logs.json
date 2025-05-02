@@ -1,0 +1,66 @@
+[
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Configuration update applied to radio-access",
+    "source_ip": "192.168.22.9",
+    "correlation_id": "corr-0422AB"
+  },
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Processed 511 packets successfully",
+    "source_ip": "192.168.246.177",
+    "correlation_id": "corr-3c055C"
+  },
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Session initiated for subscriber ID-265fCadB",
+    "source_ip": "192.168.198.170",
+    "correlation_id": "corr-F93AaF"
+  },
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "ERROR",
+    "service": "subscriber-db",
+    "message": "Invalid configuration for subscriber-db",
+    "source_ip": "192.168.7.73",
+    "correlation_id": "corr-Dc810a"
+  },
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Configuration update applied to subscriber-db",
+    "source_ip": "192.168.212.213",
+    "correlation_id": "corr-78B60d"
+  },
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Configuration update applied to core-network",
+    "source_ip": "192.168.215.63",
+    "correlation_id": "corr-2D150C"
+  },
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "INFO",
+    "service": "packet-gateway",
+    "message": "Configuration update applied to core-network",
+    "source_ip": "192.168.103.175",
+    "correlation_id": "corr-740F6e"
+  },
+  {
+    "timestamp": "2025-05-02 07:01:08",
+    "level": "INFO",
+    "service": "packet-gateway",
+    "message": "Session initiated for subscriber ID-0D390B02",
+    "source_ip": "192.168.62.137",
+    "correlation_id": "corr-8e37Fa"
+  }
+]
