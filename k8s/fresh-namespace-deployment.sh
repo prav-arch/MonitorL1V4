@@ -55,10 +55,20 @@ echo -e "${GREEN}Deploying ClickHouse...${NC}"
 kubectl apply -n ${NAMESPACE} -f import-yaml-files/clickhouse-deployment.yaml
 kubectl apply -n ${NAMESPACE} -f import-yaml-files/clickhouse-service.yaml
 
-# Deploy Ollama
-echo -e "${GREEN}Deploying Ollama...${NC}"
-kubectl apply -n ${NAMESPACE} -f import-yaml-files/ollama-deployment.yaml
-kubectl apply -n ${NAMESPACE} -f import-yaml-files/ollama-service.yaml
+# Check if Ollama is already deployed
+echo -e "${YELLOW}Checking if Ollama is already deployed...${NC}"
+if kubectl get deployment -n ${NAMESPACE} ollama &> /dev/null; then
+    echo -e "${YELLOW}Ollama deployment found. Skipping Ollama deployment.${NC}"
+else
+    echo -e "${YELLOW}Ollama deployment not found. Please run ./ollama-deployment.sh first.${NC}"
+    echo -e "${YELLOW}Do you want to continue without Ollama? (y/n)${NC}"
+    read -r answer
+    if [[ "$answer" != "y" ]]; then
+        echo -e "${RED}Aborting deployment. Please run ./ollama-deployment.sh first.${NC}"
+        exit 1
+    fi
+    echo -e "${YELLOW}Continuing deployment without Ollama...${NC}"
+fi
 
 # Deploy the application (using nginx as a placeholder)
 echo -e "${GREEN}Deploying nginx config...${NC}"

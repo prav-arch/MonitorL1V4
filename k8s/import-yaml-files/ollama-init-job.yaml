@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ollama-model-init
+  namespace: l1-monitoring
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      containers:
+      - name: ollama-init
+        image: ollama/ollama:latest
+        command: 
+        - "/bin/sh"
+        - "-c"
+        - "ollama serve > /dev/null 2>&1 & echo 'Waiting for Ollama to start...' && sleep 45 && echo 'Pulling llama2 model...' && ollama pull llama2 && echo 'Model successfully pulled'"
+        resources:
+          limits:
+            memory: "4Gi"
+            cpu: "2"
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+        volumeMounts:
+        - name: ollama-data
+          mountPath: /root/.ollama
+      restartPolicy: Never
+      volumes:
+      - name: ollama-data
+        persistentVolumeClaim:
+          claimName: ollama-data-pvc

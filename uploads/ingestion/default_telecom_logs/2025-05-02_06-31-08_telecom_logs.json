@@ -1,0 +1,114 @@
+[
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "core-network",
+    "message": "Connection established to subscriber-db",
+    "source_ip": "192.168.40.40",
+    "correlation_id": "corr-35AbFB"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Handover complete for UE ID-A941f63e",
+    "source_ip": "192.168.46.71",
+    "correlation_id": "corr-1FfDfF"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Session initiated for subscriber ID-6A1BCFDB",
+    "source_ip": "192.168.68.226",
+    "correlation_id": "corr-64Bad7"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "WARN",
+    "service": "signaling",
+    "message": "Connection pool nearing capacity",
+    "source_ip": "192.168.58.105",
+    "correlation_id": "corr-a9270C"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Processed 980 packets successfully",
+    "source_ip": "192.168.91.135",
+    "correlation_id": "corr-c84B1E"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "WARN",
+    "service": "radio-access",
+    "message": "Retry attempt 972 for operation",
+    "source_ip": "192.168.96.48",
+    "correlation_id": "corr-FDdcc8"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Processed 749 packets successfully",
+    "source_ip": "192.168.8.125",
+    "correlation_id": "corr-A42D6b"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "WARN",
+    "service": "signaling",
+    "message": "Retry attempt 1 for operation",
+    "source_ip": "192.168.210.238",
+    "correlation_id": "corr-fBbeA5"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "packet-gateway",
+    "message": "Processed 927 packets successfully",
+    "source_ip": "192.168.7.5",
+    "correlation_id": "corr-c2Cc02"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Handover complete for UE ID-a2E56ab0",
+    "source_ip": "192.168.226.62",
+    "correlation_id": "corr-BAaDfb"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "WARN",
+    "service": "signaling",
+    "message": "Slow response from core-network",
+    "source_ip": "192.168.83.197",
+    "correlation_id": "corr-5A08EC"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "ERROR",
+    "service": "signaling",
+    "message": "Resource allocation failed for bandwidth",
+    "source_ip": "192.168.237.138",
+    "correlation_id": "corr-4D6eC9"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "ERROR",
+    "service": "signaling",
+    "message": "Invalid configuration for packet-gateway",
+    "source_ip": "192.168.135.160",
+    "correlation_id": "corr-1cdb0c"
+  },
+  {
+    "timestamp": "2025-05-02 06:31:08",
+    "level": "INFO",
+    "service": "packet-gateway",
+    "message": "Handover complete for UE ID-2cacc8eD",
+    "source_ip": "192.168.187.35",
+    "correlation_id": "corr-6aEBe5"
+  }
+]

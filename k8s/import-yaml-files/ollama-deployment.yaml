@@ -5,6 +5,7 @@ metadata:
   labels:
     app: ollama
 spec:
+  progressDeadlineSeconds: 600
   replicas: 1
   selector:
     matchLabels:
@@ -24,7 +25,6 @@ spec:
         operator: "Exists"
         effect: "NoExecute"
         tolerationSeconds: 300
-      # Add more specific tolerations based on your cluster's taints
       - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
@@ -36,11 +36,11 @@ spec:
         - containerPort: 11434
           name: api
         resources:
-          requests:
-            memory: "512Mi"
-            cpu: "100m"
           limits:
-            memory: "2Gi"
+            memory: "4Gi"
+            cpu: "2"
+          requests:
+            memory: "1Gi"
             cpu: "500m"
         volumeMounts:
         - name: ollama-data
@@ -51,16 +51,17 @@ spec:
               command: 
               - "/bin/sh"
               - "-c"
-              - "ollama serve & sleep 30 && ollama pull llama2 || true"
+              - "ollama serve"
         readinessProbe:
           httpGet:
             path: /api/health
             port: 11434
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          timeoutSeconds: 5
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
           successThreshold: 1
-          failureThreshold: 10
+          failureThreshold: 3
       volumes:
       - name: ollama-data
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: ollama-data-pvc
