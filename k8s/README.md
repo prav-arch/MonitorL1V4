@@ -1,80 +1,98 @@
-# L1 Monitoring Kubernetes Deployment
+# L1 Monitoring Application - Kubernetes Deployment Guide
 
-This directory contains all the necessary Kubernetes configuration files for deploying the L1 Monitoring application stack.
+This guide provides instructions for deploying the L1 Monitoring application in a Kubernetes environment.
 
-## Quick Start
+## Deployment Options
 
-For a simplified deployment, use the combined deployment file:
+We provide two main deployment options:
+
+1. **Namespace-isolated deployment** - Recommended for clean installation
+2. **Image-less deployment** - For environments without Docker access
+
+## Prerequisites
+
+- Kubernetes cluster (v1.19+)
+- kubectl configured to connect to your cluster
+- 8GB+ of available memory (16GB+ recommended)
+- Storage for persistent volumes
+
+## Deployment Steps
+
+### Option 1: Namespace-isolated Deployment
 
 ```bash
-kubectl apply -f deployment-all.yaml
+# Clone the repository 
+git clone https://github.com/yourusername/l1-monitoring-app.git
+cd l1-monitoring-app/k8s
+
+# Make the script executable
+chmod +x fresh-namespace-deployment.sh
+
+# Run the deployment script
+./fresh-namespace-deployment.sh
 ```
 
-This single file includes all necessary components:
-- Secret configurations
-- Persistent Volume Claims
-- PostgreSQL database
-- ClickHouse database
-- Ollama LLM service
-- Main L1 Monitoring application
-- Ingress configuration
+### Option 2: Image-less Deployment
 
-## Individual Component Deployment
+If you don't have Docker access or prefer not to build custom images:
 
-If you prefer to deploy components individually, use the files in their respective directories:
-
-1. First deploy the secrets:
 ```bash
-kubectl apply -f secrets/secrets.yaml
+# Clone the repository
+git clone https://github.com/yourusername/l1-monitoring-app.git
+cd l1-monitoring-app/k8s
+
+# Make the script executable
+chmod +x image-less-deployment.sh
+
+# Run the image-less deployment script
+./image-less-deployment.sh
 ```
 
-2. Then create the persistent volume claims:
+## Accessing the Application
+
+After deployment is complete, you can access the application using:
+
+1. **Ingress** (if enabled in your cluster):
+   - Access via: http://l1-monitoring.local
+   - Note: You may need to add an entry to your hosts file
+
+2. **Port Forwarding**:
+   ```bash
+   kubectl port-forward -n l1-monitoring svc/l1-monitoring 8080:80
+   ```
+   Then access via: http://localhost:8080
+
+## Component Status
+
+Verify that all components are running:
+
 ```bash
-kubectl apply -f volumes/persistent-volume-claims.yaml
+kubectl get pods -n l1-monitoring
 ```
 
-3. Deploy the database components:
-```bash
-kubectl apply -f deployments/postgres-deployment.yaml
-kubectl apply -f services/postgres-service.yaml
-kubectl apply -f deployments/clickhouse-deployment.yaml
-kubectl apply -f services/clickhouse-service.yaml
-```
+You should see pods for:
+- l1-monitoring (the main application)
+- postgres (database)
+- clickhouse (analytics database)
+- ollama (LLM service)
 
-4. Deploy the Ollama LLM service:
-```bash
-kubectl apply -f deployments/ollama-deployment.yaml
-kubectl apply -f services/ollama-service.yaml
-```
+## Troubleshooting
 
-5. Finally, deploy the main application:
-```bash
-kubectl apply -f deployments/app-deployment.yaml
-kubectl apply -f services/app-service.yaml
-kubectl apply -f ingress/app-ingress.yaml
-```
+If you encounter issues:
 
-## Configuration Notes
+1. Check pod status:
+   ```bash
+   kubectl get pods -n l1-monitoring
+   ```
 
-- The application is configured to use ClickHouse as the primary database with PostgreSQL as a fallback
-- Default credentials are used for development (see secrets.yaml)
-- Customize the domain name in the ingress configuration before deploying to production
-- Resource limits are set conservatively and may need adjustment based on your cluster capacity
+2. Check pod logs:
+   ```bash
+   kubectl logs -n l1-monitoring <pod-name>
+   ```
 
-## Monitoring the Deployment
+3. Common issues:
+   - **Pending pods**: Check for resource constraints
+   - **CrashLoopBackOff**: Check container logs for errors
+   - **Init container failures**: May indicate volume mount issues
 
-Check the status of your pods:
-```bash
-kubectl get pods
-```
-
-View the logs of a specific pod:
-```bash
-kubectl logs <pod-name>
-```
-
-Port-forward to access the application locally:
-```bash
-kubectl port-forward svc/l1-monitoring 8080:80
-```
-Then access the application at http://localhost:8080
+For detailed troubleshooting, refer to [troubleshooting.md](troubleshooting.md).
