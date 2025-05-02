@@ -38,11 +38,11 @@ spec:
           name: native
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "50m"
+            memory: "192Mi"  # Further reduced for 8GB systems
+            cpu: "30m"       # Further reduced for 8GB systems
           limits:
-            memory: "512Mi"
-            cpu: "200m"
+            memory: "384Mi"  # Further reduced for 8GB systems
+            cpu: "150m"      # Further reduced for 8GB systems
         volumeMounts:
         - name: clickhouse-data
           mountPath: /var/lib/clickhouse

@@ -37,11 +37,11 @@ spec:
           name: api
         resources:
           limits:
-            memory: "1.5Gi"  # Reduced from 4Gi
-            cpu: "1"         # Reduced from 2
+            memory: "1Gi"    # Further reduced for 8GB systems
+            cpu: "800m"      # Further reduced for 8GB systems
           requests:
-            memory: "512Mi"  # Reduced from 1Gi
-            cpu: "200m"      # Reduced from 500m
+            memory: "384Mi"  # Further reduced for 8GB systems  
+            cpu: "100m"      # Further reduced for 8GB systems
         volumeMounts:
         - name: ollama-data
           mountPath: /root/.ollama
