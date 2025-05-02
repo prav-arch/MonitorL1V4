@@ -1,0 +1,82 @@
+[
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "core-network",
+    "message": "Processed 546 packets successfully",
+    "source_ip": "192.168.226.128",
+    "correlation_id": "corr-AD8384"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Session initiated for subscriber ID-87B8BC4E",
+    "source_ip": "192.168.219.157",
+    "correlation_id": "corr-C0A812"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "WARN",
+    "service": "signaling",
+    "message": "Connection pool nearing capacity",
+    "source_ip": "192.168.32.47",
+    "correlation_id": "corr-c88Ea3"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Session initiated for subscriber ID-E54E4EB5",
+    "source_ip": "192.168.174.236",
+    "correlation_id": "corr-9EFb5D"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Configuration update applied to subscriber-db",
+    "source_ip": "192.168.42.244",
+    "correlation_id": "corr-c9c854"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Handover complete for UE ID-dC04E6Bb",
+    "source_ip": "192.168.36.167",
+    "correlation_id": "corr-7117e9"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Configuration update applied to signaling",
+    "source_ip": "192.168.66.91",
+    "correlation_id": "corr-6cBf39"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "core-network",
+    "message": "Session initiated for subscriber ID-ee05cEdC",
+    "source_ip": "192.168.34.157",
+    "correlation_id": "corr-54E30F"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Configuration update applied to core-network",
+    "source_ip": "192.168.90.169",
+    "correlation_id": "corr-1A75e0"
+  },
+  {
+    "timestamp": "2025-05-02 04:48:23",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Session initiated for subscriber ID-e9772768",
+    "source_ip": "192.168.119.173",
+    "correlation_id": "corr-0D34cf"
+  }
+]

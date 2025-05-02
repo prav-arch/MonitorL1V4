@@ -1,0 +1,114 @@
+[
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "core-network",
+    "message": "Configuration update applied to subscriber-db",
+    "source_ip": "192.168.145.96",
+    "correlation_id": "corr-DbdfB7"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Configuration update applied to radio-access",
+    "source_ip": "192.168.199.224",
+    "correlation_id": "corr-f5d1eD"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "packet-gateway",
+    "message": "Processed 770 packets successfully",
+    "source_ip": "192.168.170.170",
+    "correlation_id": "corr-9E5695"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Session initiated for subscriber ID-6aa2B8B4",
+    "source_ip": "192.168.24.122",
+    "correlation_id": "corr-c5f3FA"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Connection established to core-network",
+    "source_ip": "192.168.39.212",
+    "correlation_id": "corr-2bBDda"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "packet-gateway",
+    "message": "Connection established to core-network",
+    "source_ip": "192.168.231.157",
+    "correlation_id": "corr-BeAf98"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Connection established to subscriber-db",
+    "source_ip": "192.168.202.88",
+    "correlation_id": "corr-Ed4bB7"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Connection established to radio-access",
+    "source_ip": "192.168.102.34",
+    "correlation_id": "corr-58dec1"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Session initiated for subscriber ID-1aAb0cBe",
+    "source_ip": "192.168.6.247",
+    "correlation_id": "corr-7C1d4d"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Session initiated for subscriber ID-3BeCca46",
+    "source_ip": "192.168.223.230",
+    "correlation_id": "corr-16ECc9"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "WARN",
+    "service": "signaling",
+    "message": "High latency detected in radio-access",
+    "source_ip": "192.168.71.65",
+    "correlation_id": "corr-9D3DEe"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "radio-access",
+    "message": "Processed 624 packets successfully",
+    "source_ip": "192.168.230.242",
+    "correlation_id": "corr-B4fbbf"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "core-network",
+    "message": "Handover complete for UE ID-Fb8c7cAF",
+    "source_ip": "192.168.58.215",
+    "correlation_id": "corr-EB18B6"
+  },
+  {
+    "timestamp": "2025-05-02 05:18:23",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Configuration update applied to core-network",
+    "source_ip": "192.168.92.236",
+    "correlation_id": "corr-D79ce4"
+  }
+]

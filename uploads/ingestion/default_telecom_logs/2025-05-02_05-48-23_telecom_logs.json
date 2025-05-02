@@ -1,0 +1,66 @@
+[
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "INFO",
+    "service": "packet-gateway",
+    "message": "Handover complete for UE ID-f0bC02F9",
+    "source_ip": "192.168.80.108",
+    "correlation_id": "corr-1eDAcD"
+  },
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "INFO",
+    "service": "core-network",
+    "message": "Configuration update applied to packet-gateway",
+    "source_ip": "192.168.96.240",
+    "correlation_id": "corr-cC44cC"
+  },
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "WARN",
+    "service": "core-network",
+    "message": "Connection pool nearing capacity",
+    "source_ip": "192.168.50.216",
+    "correlation_id": "corr-E8f920"
+  },
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Processed 492 packets successfully",
+    "source_ip": "192.168.19.81",
+    "correlation_id": "corr-5BDc33"
+  },
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Handover complete for UE ID-bEaFDBAD",
+    "source_ip": "192.168.16.229",
+    "correlation_id": "corr-bBDfb0"
+  },
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "ERROR",
+    "service": "signaling",
+    "message": "Resource allocation failed for disk space",
+    "source_ip": "192.168.80.201",
+    "correlation_id": "corr-ecDAac"
+  },
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "INFO",
+    "service": "signaling",
+    "message": "Handover complete for UE ID-AdDab8f0",
+    "source_ip": "192.168.31.97",
+    "correlation_id": "corr-8db61f"
+  },
+  {
+    "timestamp": "2025-05-02 05:48:23",
+    "level": "INFO",
+    "service": "subscriber-db",
+    "message": "Configuration update applied to packet-gateway",
+    "source_ip": "192.168.42.27",
+    "correlation_id": "corr-bAFf34"
+  }
+]
