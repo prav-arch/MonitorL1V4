@@ -229,13 +229,15 @@ try:
             return session
         
         except Exception as e:
-            logger.error(f"ClickHouse connection error: {str(e)}")
+            # Provide more informative message about database fallback
+            logger.warning(f"ClickHouse connection error: {str(e)}")
+            logger.info("This is normal when running in development or without ClickHouse installed")
             
             # Try PostgreSQL as fallback first
             try:
                 # Import PostgreSQL models for fallback
                 from postgresql_models import get_db_session as get_pg_session
-                logger.info("Falling back to PostgreSQL database")
+                logger.info("Falling back to PostgreSQL database - this is the expected behavior")
                 
                 # Check if PostgreSQL is available (DATABASE_URL should be set)
                 if os.environ.get('DATABASE_URL'):

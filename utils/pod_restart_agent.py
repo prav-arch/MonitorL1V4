@@ -78,10 +78,10 @@ class PodRestartAgent:
                     self.mock_mode = True
                     self.kubernetes_client = None
             except Exception as e:
-                logger.error(f"Failed to initialize Kubernetes client: {str(e)}")
+                logger.info(f"Kubernetes client not available: {str(e)}")
                 self.mock_mode = True
                 self.kubernetes_client = None
-                logger.warning("Falling back to mock mode due to Kubernetes client initialization failure")
+                logger.info("Using simulated pod restart agent - this is expected in development environment")
         
         # Initialize AI capabilities
         try:

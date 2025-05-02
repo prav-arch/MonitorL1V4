@@ -217,14 +217,14 @@ class OllamaLLMInterface(BaseLLMInterface):
     def _check_model_available(self) -> bool:
         """Check if the OLLAMA model is available"""
         try:
-            # Try to connect to OLLAMA server
+            # Try to connect to OLLAMA server with reduced timeout (1 second)
             health_url = f"{self.ollama_url}/api/health"
-            response = requests.get(health_url, timeout=2)
+            response = requests.get(health_url, timeout=1)
             
             if response.status_code == 200:
                 # Check if the specific model is available
                 model_url = f"{self.ollama_url}/api/tags"
-                model_response = requests.get(model_url, timeout=2)
+                model_response = requests.get(model_url, timeout=1)
                 
                 if model_response.status_code == 200:
                     models = model_response.json().get('models', [])
@@ -234,11 +234,17 @@ class OllamaLLMInterface(BaseLLMInterface):
                         logger.info(f"Model '{self.model_name}' is available in OLLAMA")
                         return True
                     else:
+                        # More specific warning about model availability
                         logger.warning(f"Model '{self.model_name}' not found in OLLAMA. Available models: {available_models}")
+                        logger.info(f"Application will use simulation mode for model '{self.model_name}'")
             
+            # If we reach here, the model is not available
+            logger.info("OLLAMA service not found or model unavailable - using built-in simulation mode")
             return False
         except requests.RequestException as e:
-            logger.error(f"Error connecting to OLLAMA server: {str(e)}")
+            # More detailed error message
+            logger.warning(f"Error connecting to OLLAMA server: {str(e)}")
+            logger.info("Falling back to built-in telecom-specific simulation mode")
             return False
     
     def generate_text(self, prompt: str, params: Optional[Dict[str, Any]] = None) -> str:

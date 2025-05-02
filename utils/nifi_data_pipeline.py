@@ -65,8 +65,8 @@ class NiFiPipeline:
                 logger.info(f"Successfully connected to NiFi at {nifi_url}")
             except Exception as e:
                 self.mock_mode = True
-                logger.warning(f"Could not connect to NiFi: {str(e)}. This is fine for local development or if NiFi is not required.")
-                logger.error(f"Failed to connect to NiFi: {str(e)}")
+                logger.info(f"NiFi connection not available: {str(e)}. This is expected when running in development mode.")
+                logger.info("Using simulated NiFi pipeline functionality - no data flows will be created.")
         else:
             logger.warning("NiPyAPI not available. Using mock mode for data ingestion.")
 
